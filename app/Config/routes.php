@@ -8,6 +8,7 @@ use App\Statics\HttpMethod;
 $class = new Route();
 
 $class::route('/',"\App\Controllers\AppController",'index',null,HttpMethod::$GET);
-$class::route('/add-product',"\App\Controllers\AppController",'addProduct',null,HttpMethod::$GET);
-$class::route('/add-product',"\App\Controllers\AppController",'addProductPost',null,HttpMethod::$POST);
-$class::route('/remove-product',"\App\Controllers\AppController",'removeProducts',null,HttpMethod::$POST);
+
+$class::route('/', "\App\Controllers\AppController", 'index', null, HttpMethod::$GET);
+$class::route('/formularz_kalkulacji', "\App\Controllers\AppController", 'formularzKalkulacji', null, HttpMethod::$GET);
+$class::route('/zapisz_formularz_kalkulkacji', "\App\Controllers\AppController", 'zapiszFormularzKalkulacji', null, HttpMethod::$POST);

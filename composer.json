@@ -1,5 +1,5 @@
 {
-    "name": "akierepka/phphomework",
+    "name": "krystiankosior/zadanie",
     "autoload": {
         "psr-4": {
             "App\\": "app",
@@ -15,8 +15,8 @@
     },
     "authors": [
         {
-            "name": "Andrzej Kierepka",
-            "email": "andrzej.kierepka@pwste.edu.pl"
+            "name": "Krystian  Kosior",
+            "email": "krystiankosior1905@gmail.com"
         }
     ],
     "require": {}
