@@ -11,12 +11,7 @@ use App\Models\ZonesModel;
 
 class AppController extends Controller
 {
-    private $model;
-
-   
-
-
-
+    
 
     public function index()
     {
@@ -27,7 +22,6 @@ class AppController extends Controller
     }
 
 
-
 public function formularzKalkulacji()
 {
 
@@ -35,25 +29,42 @@ public function formularzKalkulacji()
 
 }
 
-
 public function zapiszFormularzKalkulacji()
 {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $postcode = isset($_POST['postcode']) ? intval($_POST['postcode']) : 0;
+        $total = isset($_POST['total']) ? floatval($_POST['total']) : 0;
+        $longProduct = isset($_POST['long_product']);
 
-  
-    $data = array(
-        'postcode' => $_POST['postcode'],
-        'total' => $_POST['total'],
-        'long_product' => $_POST['long_product'],
+       
 
-    );
+     
+        if ($postcode <= 0 || strlen((string)$postcode) !== 5) {
+            $this->view('formularz_kalkulacji', ['error' => 'Invalid postcode']);
+            return;
+        }
 
+     
+        if ($total <= 0) {
+            $this->view('formularz_kalkulacji', ['error' => 'Invalid total order amount']);
+            return;
+        }
 
-    
-    $Kontrahent= new CostModel();
-    $Kontrahent->zapiszDaneDoBazy($data);
-  
+     
+        $costModel = new CostModel();
+        $shippingCost = $costModel->przeliczKosztyDostawy($postcode, $total, $longProduct);
 
+     
+
+        $costModel->zapiszKosztyDoBazy($postcode, $total, $longProduct);
+
+      
+
+        $this->view('index'); 
+    }
 }
+
+
 
 public function importStref()
 {
@@ -74,6 +85,15 @@ public function importStrefDoBazy()
         if ($handle === false) {
             $response = ['success' => false, 'message' => 'Nie udało się otworzyć pliku CSV.'];
             echo json_encode($response);
+            return;
+        }
+
+        $zonesModel = new ZonesModel();
+        $existingData = $zonesModel->pobierzDaneStref();
+        if (!empty($existingData)) {
+            $response = ['success' => false, 'message' => 'W bazie już istnieją dane.'];
+            echo json_encode($response);
+            fclose($handle);
             return;
         }
 

@@ -118,18 +118,19 @@
         <div class="row py-3 mb-4 m-lg-4" id="formularz">
             <div class="col-6">
                 <form class="row g-3" id="contractor_form" action="<?php echo URLROOT ?>/zapisz_formularz_kalkulkacji" method="POST">
-                    <div class="form-group row mb-lg-4">
-                        <label for="nazwa" class="col-sm-2 col-form-label">Postcode</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="postcode" name="postcode" placeholder="postcode">
-                            <div class="invalid-feedback" id="postcode"></div>
-                        </div>
+                <div class="form-group row mb-lg-4">
+                    <label for="postcode" class="col-sm-2 col-form-label">Postcode</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="postcode" name="postcode" placeholder="postcode" pattern="[0-9]+" title="Please enter only numbers" required>
+                        <div class="invalid-feedback" id="postcodeError"></div>
                     </div>
+                </div>
+
                     <div class="form-group row mb-lg-4">
-                        <label for="nazwa" class="col-sm-2 col-form-label">Total order amount</label>
+                        <label for="total" class="col-sm-2 col-form-label">Total order amount</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="total" name="total" placeholder="total">
-                            <div class="invalid-feedback" id="total"></div>
+                            <input type="number" class="form-control" id="total" name="total" placeholder="total" required>
+                            <div class="invalid-feedback" id="totalError"></div>
                         </div>
                     </div>
                     <div class="form-group row mb-lg-4">

@@ -34,7 +34,7 @@ class ZonesModel
 
     public function zapiszDaneDoBazy($data)
     {
-        // Zmieniono pola w zapytaniu SQL na nowe pola tabeli
+        
         $query = "INSERT INTO {$this->nameTable} (zone, shipping_price) 
                   VALUES (:zone, :shipping_price)";
         $statement = $this->pdo->prepare($query);
