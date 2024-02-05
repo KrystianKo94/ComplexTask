@@ -115,14 +115,36 @@
             </header>
         </div>
         <div class="b-example-divider"></div>
-        <div class="row py-3 mb-4 m-lg-4" id="import">
-                <div class="col-6">
-                    <form method="POST" action="/import_stref_do_bazy" enctype="multipart/form-data">
-                        <input type="file" name="import_zones" accept=".csv">
-                        <button type="submit" class="btn btn-primary">Importuj z CSV</button>
-                    </form>
-                </div>
-            </div>
+ 
+        <div class="container mt-4">
+        <h2>Cost list</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Postcode</th>
+                    <th>Total Order Amount</th>
+                    <th>Long Product</th>
+                    <th>Shipping Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($costs as $cost): ?>
+                    <tr>
+                        <td><?php echo $cost['id']; ?></td>
+                        <td><?php echo $cost['postcode']; ?></td>
+                        <td><?php echo $cost['total_order_amount']; ?></td>
+                        <td><?php echo $cost['long_product'] ? 'Yes' : 'No'; ?></td>
+                        <td><?php echo $cost['shipping_cost']; ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+   
     </main>
     <div class="fixed-bottom bg-body-tertiary">
         <div class="b-example-divider"></div>
@@ -132,9 +154,8 @@
             </footer>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" ></script>
     <script src="js/bootstrap.bundle.min.js"></script>
-
 </div>
 </body>
 </html>

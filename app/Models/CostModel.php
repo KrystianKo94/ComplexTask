@@ -34,15 +34,16 @@ class CostModel
         $key = array_search($zone, array_column($zonesData, 'zone'));
     
         if ($key !== false) {
-      
-            $shippingCost = $zonesData[$key]['shipping_price'];
-    
-         
+
+
             if ($total > 12500) {
-                $shippingCost *= 0.95;
+                $shippingCost +=$total*0.95;
             }
+            
+            $shippingCost = $zonesData[$key]['shipping_price'];
+            $shippingCost+=$total;
     
-         
+        
             if ($longProduct) {
                 $shippingCost += 1995;
             }
@@ -100,6 +101,17 @@ class CostModel
             return 0;
         }
     }
+
+    public function pobierzListeKosztow()
+{
+    $query = "SELECT * FROM {$this->nameTable}";
+    $statement = $this->pdo->prepare($query);
+
+    $statement->execute();
+
+    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $results;
+}
 
 }
 

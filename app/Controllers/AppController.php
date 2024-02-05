@@ -132,4 +132,12 @@ public function importStrefDoBazy()
     }
 }
 
+public function listaKosztow()
+{
+    $costModel = new CostModel();
+    $costs = $costModel->pobierzListeKosztow();
+
+    $this->view('lista_kosztow', ['costs' => $costs]);
+}
+
 }

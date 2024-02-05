@@ -14,4 +14,5 @@ $class::route('/formularz_kalkulacji', "\App\Controllers\AppController", 'formul
 $class::route('/zapisz_formularz_kalkulkacji', "\App\Controllers\AppController", 'zapiszFormularzKalkulacji', null, HttpMethod::$POST);
 $class::route('/import_stref', "\App\Controllers\AppController", 'importStref', null, HttpMethod::$GET);
 $class::route('/import_stref_do_bazy', "\App\Controllers\AppController", 'importStrefDoBazy', null, HttpMethod::$POST);
+$class::route('/lista_kosztow', "\App\Controllers\AppController", 'listaKosztow', null, HttpMethod::$GET);
 

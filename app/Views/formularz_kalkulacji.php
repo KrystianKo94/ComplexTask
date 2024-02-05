@@ -121,7 +121,7 @@
                 <div class="form-group row mb-lg-4">
                     <label for="postcode" class="col-sm-2 col-form-label">Postcode</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="postcode" name="postcode" placeholder="postcode" pattern="[0-9]+" title="Please enter only numbers" required>
+                        <input type="number" class="form-control" id="postcode" name="postcode" placeholder="postcode" pattern="[0-9]+" title="Please enter only numbers" required>
                         <div class="invalid-feedback" id="postcodeError"></div>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                     </div>
                     <div class="form-group row mb-lg-4">
                         <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary">Zapisz</button>
+                            <button type="submit" class="btn btn-primary">Przelicz</button>
                         </div>
                     </div>
                 </form>
