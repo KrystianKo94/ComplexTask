@@ -86,7 +86,7 @@
         }
 
         .main {
-            margin-left: 250px; /* Same as the width of the sidenav */
+            margin-left: 250px; 
             padding: 0px 10px;
         }
     </style>

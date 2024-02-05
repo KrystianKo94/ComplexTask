@@ -86,7 +86,7 @@
         }
 
         .main {
-            margin-left: 250px; 
+            margin-left: 250px; /* Same as the width of the sidenav */
             padding: 0px 10px;
         }
     </style>
@@ -115,41 +115,14 @@
             </header>
         </div>
         <div class="b-example-divider"></div>
-        <div class="row py-3 mb-4 m-lg-4" id="formularz">
-            <div class="col-6">
-                <form class="row g-3" id="contractor_form" action="<?php echo URLROOT ?>/zapisz_formularz_kalkulkacji" method="POST">
-                    <div class="form-group row mb-lg-4">
-                        <label for="nazwa" class="col-sm-2 col-form-label">Postcode</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="postcode" name="postcode" placeholder="postcode">
-                            <div class="invalid-feedback" id="postcode"></div>
-                        </div>
-                    </div>
-                    <div class="form-group row mb-lg-4">
-                        <label for="nazwa" class="col-sm-2 col-form-label">Total order amount</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="total" name="total" placeholder="total">
-                            <div class="invalid-feedback" id="total"></div>
-                        </div>
-                    </div>
-                    <div class="form-group row mb-lg-4">
-                        <div class="col-sm-10">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="long_product" name="long_product">
-                                <label class="form-check-label" for="long_product">Long product</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row mb-lg-4">
-                        <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary">Zapisz</button>
-                        </div>
-                    </div>
-                </form>
+        <div class="row py-3 mb-4 m-lg-4" id="import">
+                <div class="col-6">
+                    <form method="POST" action="/import_stref_do_bazy" enctype="multipart/form-data">
+                        <input type="file" name="import_zones" accept=".csv">
+                        <button type="submit" class="btn btn-primary">Importuj z CSV</button>
+                    </form>
+                </div>
             </div>
-        </div>
-
-   
     </main>
     <div class="fixed-bottom bg-body-tertiary">
         <div class="b-example-divider"></div>
@@ -159,8 +132,9 @@
             </footer>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+
 </div>
 </body>
 </html>
